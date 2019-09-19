@@ -12,11 +12,12 @@ public class SatelliteMap {
     public static String basicUrld = "_sm.png";
     public static boolean isStoreOk = false;
 
-    public static int awakeHour = 23; // need to change
+    public static int awakeHour = 20; // need to change
 
     public static ArrayList<String> getUrl()
     {
         Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,   -1);
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
         int day  = calendar.get(Calendar.DATE) ;
@@ -50,6 +51,7 @@ public class SatelliteMap {
     public static boolean isTime()
     {
         Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,   -1);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         boolean result = false;
         if( hour  == awakeHour  && isStoreOk == false )
@@ -72,6 +74,7 @@ public class SatelliteMap {
     {
         ArrayList<String> finalResult = new ArrayList<String>();
         Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,   -1);
         String  result1;
         String result2;
         int year = calendar.get(Calendar.YEAR);

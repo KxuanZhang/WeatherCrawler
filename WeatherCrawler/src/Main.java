@@ -16,17 +16,18 @@ public class Main {
     public static  void  crawl()
     {
         // satellite map
-//        if(SatelliteMap.isTime())
-//        {
-//            ArrayList<String> temp =  SatelliteMap.getUrl();
-//            ArrayList<String> name = SatelliteMap.getName();
-//
-//            for( int i = 0; i<temp.size() ; i++) {
-//                String SatelliteMapUrl = temp.get(i);
-//                boolean downloadResult  = DownloadPicture.download(SatelliteMapUrl, storeUrl, name.get(i) );
-//                SatelliteMap.isStoreOk = downloadResult;
-//            }
-//        }
+        if(SatelliteMap.isTime())
+        {
+            ArrayList<String> temp =  SatelliteMap.getUrl();
+            ArrayList<String> name = SatelliteMap.getName();
+
+            for( int i = 0; i<temp.size() ; i++) {
+                String SatelliteMapUrl = temp.get(i);
+                boolean downloadResult  = DownloadPicture.download(SatelliteMapUrl, storeUrl, name.get(i) );
+                SatelliteMap.isStoreOk = downloadResult;
+
+            }
+        }
         //wind filed map
         if( WindField.isTime())
         {

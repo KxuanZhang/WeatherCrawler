@@ -8,6 +8,7 @@ import java.net.URL;
 public class DownloadPicture {
 
 
+
     public static boolean download( String url , String storeUrl , String name )   {
         HttpURLConnection conn = null;
         InputStream inputStream = null;
@@ -51,9 +52,10 @@ public class DownloadPicture {
         }
         catch ( PictureNotExitException p)
         {
-            System.out.println(p.toString());
-            System.out.println("name: " + p.getName());
-            System.out.println("url: " + p.getUrl());
+                System.out.println(p.toString());
+                System.out.println("name: " + p.getName());
+                System.out.println("url: " + p.getUrl());
+
             return false;
         }
         catch (Exception e) {
