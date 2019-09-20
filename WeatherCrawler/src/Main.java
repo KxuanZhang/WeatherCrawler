@@ -9,11 +9,33 @@ import java.util.ArrayList;
 public class Main {
 
 
-    public static String storeUrl = "D:\\weatherPicture\\";
+//    public static String storeUrl = "D:\\weatherPicture\\";
 //    public static String storeUrl = "/home/tank/weather";
+    public static String storeUrl = "/home/tank/weather2";
 
 
     public static  void  crawl()
+    {
+
+        downloadSatelliteMap();
+        downloadUVGraph();
+        downloadWindFiled();
+        downloadVisibilityGraph();
+        downloadGlobalSatellite();
+
+    }
+
+    public  static void main(String argus [])
+    {
+
+        while( true)
+        {
+            crawl();
+        }
+
+    }
+
+    public static void downloadSatelliteMap()
     {
         // satellite map
         if(SatelliteMap.isTime())
@@ -28,6 +50,27 @@ public class Main {
 
             }
         }
+    }
+
+    public static void downloadUVGraph()
+    {
+        //UV graph
+        if( UVGraph.isTime())
+        {
+            ArrayList<String> temp =  UVGraph.getUrl();
+            ArrayList<String> name = UVGraph.getName();
+
+            for( int i = 0; i<temp.size() ; i++) {
+                String UVGraphUrl = temp.get(i);
+                boolean downloadResult  = DownloadPicture.download( UVGraphUrl, storeUrl, name.get(i) );
+                UVGraph.isStoreOk = downloadResult;
+
+            }
+        }
+    }
+
+    public static void downloadWindFiled()
+    {
         //wind filed map
         if( WindField.isTime())
         {
@@ -40,7 +83,10 @@ public class Main {
                 WindField.isStoreOk = downloadResult;
             }
         }
+    }
 
+    public static void downloadVisibilityGraph()
+    {
         //VisibilityGraph
         if(VisibilityGraph.isTime())
         {
@@ -55,15 +101,20 @@ public class Main {
         }
     }
 
-    public  static void main(String argus [])
+    public static  void downloadGlobalSatellite()
     {
-
-        while( true)
+        if( GlobalSatellite.isTime())
         {
-            crawl();
+            ArrayList<String> temp =  GlobalSatellite.getUrl();
+            ArrayList<String> name = GlobalSatellite.getName();
+
+            for( int i = 0; i<temp.size() ; i++) {
+                String GlobalSatelliteUrl = temp.get(i);
+                boolean downloadResult  = DownloadPicture.download( GlobalSatelliteUrl, storeUrl, name.get(i) );
+                GlobalSatellite.isStoreOk = downloadResult;
+
+            }
         }
-
     }
-
 
 }

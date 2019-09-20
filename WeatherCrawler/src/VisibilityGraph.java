@@ -15,7 +15,11 @@ public class VisibilityGraph {
     {
         String result = "";
         int re = 0;
-        re = hour  ;
+        re = hour -1 ;
+        if( re < 0)
+        {
+            re = 23;
+        }
         result += (re < 10 ? "0" : "") + re;
         return result;
     }
@@ -28,6 +32,13 @@ public class VisibilityGraph {
         int day  = calendar.get(Calendar.DATE) ;
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
+        if( hour -1 < 0)
+        {
+            calendar.add(Calendar.DATE,   -1);
+            year = calendar.get(Calendar.YEAR);
+            month = calendar.get(Calendar.MONTH) + 1;
+            day  = calendar.get(Calendar.DATE) ;
+        }
         String formalMonth = "" + (month < 10 ? '0' : "") + month;
         String formalDay = "" + ( day < 10 ? '0' : "") + day;
         String result1 = basicUrla;
@@ -55,7 +66,7 @@ public class VisibilityGraph {
         int month = calendar.get(Calendar.MONTH) + 1;
         int day  = calendar.get(Calendar.DATE);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        result1 = "VisibilityGraph" + year + ( month < 10 ? '0' : "") + month + ( day < 10 ? '0' : "") + day + getHourId(hour) +".jpg";
+        result1 = "VisibilityGraph" + year + ( month < 10 ? '0' : "") + month + ( day < 10 ? '0' : "") + day + (hour -1) +".jpg";
         finalResult.add(result1);
         return finalResult;
     }

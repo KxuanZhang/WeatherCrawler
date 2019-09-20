@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class UVGraph {
-    //http://www.temis.nl/uvradiation/UVD/uvdvc0_wd.gif
+public class GlobalSatellite {
 
-    public static String basicUrl = "http://www.temis.nl/uvradiation/UVD/uvdvc0_wd.gif";
+    //http://www.temis.nl/protocols/o3col/data/omi/o3doas_yesterday.gif
+
+    public static String basicUrl = "http://www.temis.nl/protocols/o3col/data/omi/o3doas_yesterday.gif";
     public static boolean isStoreOk = false;
-    public static int awakeHour = 8; // need to change
-
+    public static int awakeHour = 14; // need to change
 
     public static ArrayList<String> getUrl()
     {
@@ -18,26 +18,19 @@ public class UVGraph {
         return finalResult;
 
     }
-
-    public static boolean isTime()
-    {
+    public static boolean isTime() {
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         boolean result = false;
-        if( hour  == awakeHour  && isStoreOk == false )
-        {
+        if (hour == awakeHour && isStoreOk == false) {
             result = true;
-        }
-        else if( hour != awakeHour)
-        {
+        } else if (hour != awakeHour) {
             isStoreOk = false;
             result = false;
-        }
-        else
-        {
+        } else {
             result = false;
         }
-        return  result;
+        return result;
     }
 
     public static ArrayList<String>  getName()
@@ -48,11 +41,10 @@ public class UVGraph {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
         int day  = calendar.get(Calendar.DATE);
-        result1 = "UVGraph" + year + ( month < 10 ? '0' : "") + month + ( day < 10 ? '0' : "") + day + ".gif";
+        result1 = "GlobalSatellite" + year + ( month < 10 ? '0' : "") + month + ( day < 10 ? '0' : "") + day + ".gif";
         finalResult.add(result1);
         return finalResult;
     }
 
+
 }
-
-
