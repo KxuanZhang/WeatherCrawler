@@ -40,6 +40,19 @@ public class Main {
                 WindField.isStoreOk = downloadResult;
             }
         }
+
+        //VisibilityGraph
+        if(VisibilityGraph.isTime())
+        {
+            ArrayList<String> temp =  VisibilityGraph.getUrl();
+            ArrayList<String> name = VisibilityGraph.getName();
+
+            for( int i = 0; i<temp.size() ; i++) {
+                String VisibilityGraphUrl = temp.get(i);
+                boolean downloadResult  = DownloadPicture.download( VisibilityGraphUrl, storeUrl, name.get(i) );
+                VisibilityGraph.isStoreOk = downloadResult;
+            }
+        }
     }
 
     public  static void main(String argus [])
