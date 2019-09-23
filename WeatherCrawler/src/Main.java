@@ -9,20 +9,21 @@ import java.util.ArrayList;
 public class Main {
 
 
-//    public static String storeUrl = "D:\\weatherPicture\\";
+    public static String storeUrl = "D:\\weatherPicture\\";
 //    public static String storeUrl = "/home/tank/weather";
-    public static String storeUrl = "/home/tank/weather2";
+//    public static String storeUrl = "/home/tank/weather2";
 
 
     public static  void  crawl()
     {
 
-        downloadSatelliteMap();
-        downloadUVGraph();
-        downloadWindFiled();
-        downloadVisibilityGraph();
-        downloadGlobalSatellite();
-
+//        downloadSatelliteMap();
+//        downloadUVGraph();
+//        downloadWindFiled();
+//        downloadVisibilityGraph();
+//        downloadGlobalSatellite();
+//        downloadPrecipitation();
+        downloadWindFieldForecast();
     }
 
     public  static void main(String argus [])
@@ -112,6 +113,38 @@ public class Main {
                 String GlobalSatelliteUrl = temp.get(i);
                 boolean downloadResult  = DownloadPicture.download( GlobalSatelliteUrl, storeUrl, name.get(i) );
                 GlobalSatellite.isStoreOk = downloadResult;
+
+            }
+        }
+    }
+
+    public static void downloadPrecipitation()
+    {
+        if(  Precipitation.isTime())
+        {
+            ArrayList<String> temp =  Precipitation.getUrl();
+            ArrayList<String> name =  Precipitation.getName();
+
+            for( int i = 0; i<temp.size() ; i++) {
+                String  PrecipitationUrl = temp.get(i);
+                boolean downloadResult  = DownloadPicture.download( PrecipitationUrl , storeUrl, name.get(i) );
+                Precipitation.isStoreOk = downloadResult;
+
+            }
+        }
+    }
+
+    public  static void downloadWindFieldForecast()
+    {
+        if(   WindFieldForecast.isTime())
+        {
+            ArrayList<String> temp =   WindFieldForecast.getUrl();
+            ArrayList<String> name =  WindFieldForecast.getName();
+
+            for( int i = 0; i<temp.size() ; i++) {
+                String  WFFUrl = temp.get(i);
+                boolean  downloadResult  = DownloadPicture.download( WFFUrl , storeUrl, name.get(i) );
+                WindFieldForecast.isStoreOk = downloadResult;
 
             }
         }

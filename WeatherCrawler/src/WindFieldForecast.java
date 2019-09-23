@@ -1,25 +1,28 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class VisibilityGraph {
+public class WindFieldForecast {
 
-    //能见度，每小时更新
-    //http://image.nmc.cn/product/2019/09/19/APWF/medium/SEVP_NMC_APWF_SOB_EQ2_ACHN_L89_P9_20190919210000000.jpg
+//    风场预报图，每三个小时，
+//    http://image.nmc.cn/product/2019/09/19/NWPR/medium/SEVP_CNWP_NWPR_SRGRP_EDA_ACHN_L10M_P9_20190919060000603.png
     public static String basicUrla = "http://image.nmc.cn/product/";
-    public static String basicUrlb = "/APWF/medium/SEVP_NMC_APWF_SOB_EQ2_ACHN_L89_P9_";
-    public static String basicUrlc = "0000000.jpg";
-    public static int [] awakeHour = { 0 , 1 , 2 , 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+    public static String basicUrlb = "/NWPR/medium/SEVP_CNWP_NWPR_SRGRP_EDA_ACHN_L10M_P9_";
+    public static String basicUrlc = "0000603.png";
+
+    public static int [] awakeHour = {  2 , 5 , 8, 11 , 14, 17,  20, 23};
+
     public static boolean isStoreOk = false;
     public static int nowHour  = -1;
+    public static int timeBias = 8 + 3;
 
     public static String getHourId( int hour)
     {
         String result = "";
         int re = 0;
-        re = hour -1 ;
-        if( re < 0)
+        re = hour - timeBias;
+        if( re <  0)
         {
-            re = 23;
+            re += 24;
         }
         result += (re < 10 ? "0" : "") + re;
         return result;
@@ -33,7 +36,7 @@ public class VisibilityGraph {
         int day  = calendar.get(Calendar.DATE) ;
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
-        if( hour -1 < 0)
+        if( hour - timeBias < 0)
         {
             calendar.add(Calendar.DATE,   -1);
             year = calendar.get(Calendar.YEAR);
@@ -58,6 +61,7 @@ public class VisibilityGraph {
 
     }
 
+
     public static ArrayList<String>  getName()
     {
         ArrayList<String> finalResult = new ArrayList<String>();
@@ -67,7 +71,14 @@ public class VisibilityGraph {
         int month = calendar.get(Calendar.MONTH) + 1;
         int day  = calendar.get(Calendar.DATE);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        result1 = "VisibilityGraph" + year + ( month < 10 ? '0' : "") + month + ( day < 10 ? '0' : "") + day + (hour -1) +".jpg";
+        if( hour - timeBias < 0)
+        {
+            calendar.add(Calendar.DATE,   -1);
+            year = calendar.get(Calendar.YEAR);
+            month = calendar.get(Calendar.MONTH) + 1;
+            day  = calendar.get(Calendar.DATE) ;
+        }
+        result1 = "WindFieldForecast" + year + ( month < 10 ? '0' : "") + month + ( day < 10 ? '0' : "") + day + getHourId(hour) +".png";
         finalResult.add(result1);
         return finalResult;
     }
@@ -104,4 +115,8 @@ public class VisibilityGraph {
         }
         return  result;
     }
+
+
+
 }
+

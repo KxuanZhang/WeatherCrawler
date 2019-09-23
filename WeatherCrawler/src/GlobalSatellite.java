@@ -3,6 +3,7 @@ import java.util.Calendar;
 
 public class GlobalSatellite {
 
+    //全球卫星图，每天更新
     //http://www.temis.nl/protocols/o3col/data/omi/o3doas_yesterday.gif
 
     public static String basicUrl = "http://www.temis.nl/protocols/o3col/data/omi/o3doas_yesterday.gif";

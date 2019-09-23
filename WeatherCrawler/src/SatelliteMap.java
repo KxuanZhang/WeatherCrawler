@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 public class SatelliteMap {
 
+    //卫星图，每天更新
     //http://www.temis.nl/airpollution/no2col/data/gome2b/2019/08/world_no2total20190822_sm.png";
     //http://www.temis.nl/airpollution/no2col/data/gome2b/2019/08/world_no2trop20190822_sm.png
     public static String basicUrla = "http://www.temis.nl/airpollution/no2col/data/gome2b/";

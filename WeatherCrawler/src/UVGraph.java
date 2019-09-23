@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class UVGraph {
+    //uv图，每天更新
     //http://www.temis.nl/uvradiation/UVD/uvdvc0_wd.gif
 
     public static String basicUrl = "http://www.temis.nl/uvradiation/UVD/uvdvc0_wd.gif";

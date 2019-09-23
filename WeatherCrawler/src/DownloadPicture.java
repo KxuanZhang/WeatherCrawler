@@ -42,8 +42,8 @@ public class DownloadPicture {
             bis = new BufferedInputStream(inputStream);
             byte b[] = new byte[1024];
             int len = 0;
-//            out = new FileOutputStream(file0 + "\\" +name );
-            out = new FileOutputStream(file0 + "/" +name );
+            out = new FileOutputStream(file0 + "\\" +name );
+//            out = new FileOutputStream(file0 + "/" +name );
             while ((len = bis.read(b)) != -1) {
                 out.write(b, 0, len);
             }

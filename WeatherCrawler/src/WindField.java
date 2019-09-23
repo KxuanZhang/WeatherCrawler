@@ -3,6 +3,8 @@ import java.util.Calendar;
 
 public class WindField {
 
+
+    //风场图，每小时更新
     //http://image.nmc.cn/product/2019/09/19/STFC/medium/SEVP_NMC_STFC_SFER_EDA_ACHN_L88_PB_20190919060000000.jpg
     public static String basicUrla = "http://image.nmc.cn/product/";
     public static String basicUrlb = "/STFC/medium/SEVP_NMC_STFC_SFER_EDA_ACHN_L88_PB_";
